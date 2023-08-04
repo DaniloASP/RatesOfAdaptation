@@ -22,9 +22,9 @@
 #
 #
 #
-#################
-#  Sanity check #
-#################
+##################
+#  Sanity check  #
+##################
 #
 # If necessary simplify contig names
 sed 's/ .*//' GCF_002742065.1_CB0940_V2_genomic.fna > CB0940_V2_genomic.fa # it will remove all characters after a first space
@@ -126,6 +126,90 @@ done < /home/pereira/2020_POSTDOC_MAIN/$Species_is/$Species_is.global.ratesOfada
 
 # submit to the queueing system
 sh sbatch_GATK
+
+#########################################
+# Combine the previously generated gvcf #     
+#########################################
+Species_is="Verticillium"
+
+# CombineGVCFs
+REF="/home/pereira/2020_POSTDOC_MAIN/$Species_is/0_data/0_references/0_genome_DNA/Vdahliae_genomic"
+BASE="/home/pereira/2020_POSTDOC_MAIN"
+
+# The first step is to make a list of all the g.vcf files generated with the HaplotypeCaller.
+find $BASE/$Species_is/1_genome_alignment/2_gvcf -name "*.g.vcf" > VD_105.g.vcf.list
+
+# Then, it is possible to join all the files with the tool CombineGVCFs
+module load java
+
+echo -e '#!/bin/bash' > run_VD_105.sh
+echo "gatk --java-options '-XX:+UseSerialGC' CombineGVCFs -R "$REF".fasta \
+-V $BASE/$Species_is/2_scripts/2_SNP_calling/VD_105.g.vcf.list  \
+-O $BASE/$Species_is/1_genome_alignment/3_combined_gvcf/VD_105.combined.g.vcf" >> run_VD_105.sh
+
+#####################################################
+# run GATK4 GenotypeGVCFs on each file individually #
+#####################################################
+#
+# run GenotypeGVCF
+# --allow-old-rms-mapping-quality-annotation-data to allow usage of g.vcf files made with gatk versions older than 4
+#echo -e '#!/bin/bash' > run_VD_105.sh
+echo "gatk --java-options '-XX:+UseSerialGC' GenotypeGVCFs --allow-old-rms-mapping-quality-annotation-data \
+	   -R "$REF".fasta \
+	   --verbosity ERROR \
+	   -V $BASE/$Species_is/1_genome_alignment/3_combined_gvcf/VD_105.combined.g.vcf \
+	   --max-alternate-alleles 2 \
+	   -O $BASE/$Species_is/1_genome_alignment/4_genotyped_vcf/VD_105.genotypedGVC.vcf" >> run_VD_105.sh
+
+###################################
+# SelectVariants. INDELs and SNPs #
+###################################
+echo "gatk SelectVariants \
+	    -R "$REF".fasta \
+	    -V $BASE/$Species_is/1_genome_alignment/4_genotyped_vcf/VD_105.genotypedGVC.vcf \
+	    --select-type-to-include INDEL \
+		--select-type-to-include SNP \
+	    -O $BASE/$Species_is/1_genome_alignment/4_genotyped_vcf/VD_105.genotyped.SNP.and.INDEL.vcf" >> run_VD_105.sh
+
+##################################################
+# Set filtering thresholds for future hardfilter #
+##################################################
+#
+AN=5 # number of samples
+QUAL=1000.0 # How confident we are that there is some kind of variation at a given site. The variation may be present in one or more samples
+QD=5.0 # This annotation is intended to normalize the variant quality in order to avoid inflation caused when there is deep coverage
+MQ=20.0 # It is meant to include the standard deviation of the mapping qualities, allowing to check for the variation in the dataset
+ReadPosRankSum_lower=-2.0 # This is the u-based z-approximation from the Rank Sum Test for site position within reads. It compares whether the positions of the reference and alternate alleles are different within the reads. Seeing an allele only near the ends of reads is indicative of error, because that is where sequencers tend to make the most errors. A value close to zero is best because it indicates there is little difference between the positions of the reference and alternate alleles in the reads.
+ReadPosRankSum_upper=2.0
+MQRankSum_lower=-2.0 # This is the u-based z-approximation from the Rank Sum Test for mapping qualities. It compares the mapping qualities of the reads supporting the reference allele and the alternate allele. A positive value means the mapping qualities of the reads supporting the alternate allele are higher than those supporting the reference allele; a negative value indicates the mapping qualities of the reference allele are higher than those supporting the alternate allele. A value close to zero is best and indicates little difference between the mapping qualities.
+MQRankSum_upper=2.0
+BaseQRankSum_lower=-2.0 # This variant-level annotation tests compares the base qualities of the data supporting the reference allele with those supporting the alternate allele. The ideal result is a value close to zero, which indicates there is little to no difference
+BaseQRankSum_upper=2.0
+
+echo "gatk --java-options '-XX:+UseSerialGC' VariantFiltration -R "$REF".fasta \
+	   	-V $BASE/$Species_is/1_genome_alignment/4_genotyped_vcf/VD_105.genotyped.SNP.and.INDEL.vcf \
+	   	--filter 'AN < $AN' --filter-name 'nSamples' \
+	   	--filter 'QD < $QD' --filter-name 'QDFilter' \
+	   	--filter 'QUAL < $QUAL' --filter-name 'QualFilter' \
+	   	--filter 'MQ < $MQ' --filter-name 'MQ' \
+	   	--filter 'ReadPosRankSum < $ReadPosRankSum_lower' --filter-name 'ReadPosRankSum' \
+	   	--filter 'ReadPosRankSum > $ReadPosRankSum_upper' --filter-name 'ReadPosRankSum' \
+	   	--filter 'MQRankSum < $MQRankSum_lower' --filter-name 'MQRankSum' \
+	   	--filter 'MQRankSum > $MQRankSum_upper' --filter-name 'MQRankSum' \
+	   	--filter 'BaseQRankSum < $BaseQRankSum_lower' --filter-name 'BaseQRankSum' \
+	   	--filter 'BaseQRankSum > $BaseQRankSum_upper' --filter-name 'BaseQRankSum' \
+	   	-O $BASE/$Species_is/1_genome_alignment/4_genotyped_vcf/VD_105.genotyped.SNP.and.INDEL.AN$AN.vcf" >> run_VD_105.sh
+
+
+###########################################################################################
+# hard filtering - remove SNPs that have failled one of the previous quality requirements #
+###########################################################################################
+#
+echo "vcftools --vcf $BASE/$Species_is/1_genome_alignment/4_genotyped_vcf/VD_105.genotyped.SNP.and.INDEL.AN$AN.vcf --remove-filtered-all --remove-indels --recode --stdout | bgzip -c > $BASE/$Species_is/1_genome_alignment/4_genotyped_vcf/VD_105.genotyped.SNP.and.INDEL.AN$AN.HardFilter.snpONLY.vcf.gz" >> run_VD_105.sh
+
+sbatch --job-name=VD_105 --nodes=1 --ntasks=1 --ntasks-per-node=1 --cpus-per-task=1 --time=72:00:00 --mem=32G --error=job.%J.err --output=job.%J.out --mail-type=END,FAIL --mail-user=pereira@evolbio.mpg.de --partition=standard run_VD_105.sh
+
+
 
 ######################################################################################################################
 #                                                      END                                                           #
