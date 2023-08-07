@@ -1,14 +1,28 @@
-######################################################
-#### This script needs to run once per species   #####
-######################################################
+################################
+# Danilo Pereira - Kiel - 2023 #
+################################
+#
+#
+#
+###########################################################################
+# This script will prepare all necessary files for pseudogenome assembly  #
+#                                                                         #
+# Files needed:                                                           #
+#               * protein fasta file from target and outgroup species     #
+#                                                                         #
+###########################################################################
+#
+#
+#
+########################################### Script will do ########################################### 
+# File input needed for pseudogenome preparation                                                     #
+# * Run orthofinder to identify unique ortologue gene copies between target and outgroup species     #
+#                                                                                                    #
+######################################################################################################              
 
-######################### Script will do ########################################## 
-# * STEP 1: wallace                                                               #
-###################################################################################
-
-### Needed files
-# 1- Target species protein fasta
-# 2- Outgroup species protein fasta
+######################################################################################################################
+#                                                    Start                                                           #
+######################################################################################################################
 
 ## change needed per species
 Species_is="Verticillium"
@@ -28,33 +42,20 @@ cp "$REF"_protein.fasta $Output_folder
 # outgroup species
 cp /home/pereira/2020_POSTDOC_MAIN/outgroups/$Species_is/4_BRAKER2/braker/augustus.hints.aa $Output_folder/augustus.hints.fasta
 
-# simplify header 
+# simplify the header in the protein fasta file
 sed -i'' 's/ uncharacterized.*//' "$Abb_is"_protein.fasta
 sed -i'' 's/ LOW.*//' "$Abb_is"_protein.fasta
 
 echo $(pwd)
 
-# orthofinder do not complete on wallace. It stay running for a while, so best to do in locally in my mac.
-
-######################### Script will do ########################################## 
-# * STEP 2: mac                                                                   #
-###################################################################################
-
-# copy both fasta to mac
-cd /Users/danilo/Dropbox/Backup/MacBookPro/PostDoc/Stukenbrock/Project/2020_postdoc_main/03_results/20spp_PA_MajorGenomeAlignment/Wallace_run1/2020_POSTDOC_MAIN/Podospora/0_data/5_orthofinder
-
-Species_is="Verticillium"
-
-rsync -v -a pereira@wallace:"/home/pereira/2020_POSTDOC_MAIN/$Species_is/3_analysis/8_select_orthologs/*fasta" .
-
+# activate conda environment
 conda activate env_orthofinder
 
 # run it. after -f it should be a folder containing the protein fasta sequence of both species to be compared. 1 file per species
 input_Folder=$(pwd)
 
-orthofinder -f $input_Folder -og
+orthofinder -f $input_Folder -og # -og: Stop after inferring orthogroups
 
-rsync -v -a OrthoFinder pereira@wallace:"/home/pereira/2020_POSTDOC_MAIN/$Species_is/3_analysis/8_select_orthologs/"
-
-# on wallace do (for script 6)
-cp /home/pereira/2020_POSTDOC_MAIN/outgroups/$Species_is/4_BRAKER2/braker/augustus.hints.codingseq $Output_folder/augustus.hints.codingseq.fasta
+######################################################################################################################
+#                                                      END                                                           #
+######################################################################################################################
