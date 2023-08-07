@@ -30,7 +30,7 @@
 
 ####################################### STEP 1 ####################################### 
 # This block will parse a GFF file into a GFF datafame containing only exons.
-# Then will collect gene_id (name of gene e.g. Zt09_11_00001) for all exons (yes, repited gene_id's if more then 1 exon)
+# Then will collect gene_id (name of gene e.g. Zt09_11_00001) for all exons/CDS (yes, repited gene_id's if more then 1 exon)
 # The final goal is a dataframe GFF-like with gene_id repeated over exons (no output saved to file)
 # IMPORTANT: The way the GFF is coded depends on software used, thus GFFs might be different and it can affect the script
 # Example GFF file: /Users/danilo/Desktop/PostDoc/Stukenbrock/Project/2020_postdoc_main/03_results/20210216_mergeExon/01_run/8_RStudio_merge/Example_files/chr11.12.13.Ztritici_annotation_Grandaubert_noChr_noModel.sorted.gff
