@@ -18,7 +18,9 @@
 #                                                                                                                                                                                                       #                                   
 # IMPORTANT: There are degrees of optmization and speed for MACSE. In this script I use a 'relatively quick optimization' given by -max_refine_iter 3 -local_realign_init 0.3 -local_realign_dec 0.2    #
 #                                                                                                                                                                                                       #
-# IMPORTANT: This script uses array on wallace for running > 7000 jobs.                                                                                                                                 #
+# IMPORTANT: This script uses array on wallace for running > 7000 jobs.                                                                                                                                 #           
+#                                                                                                                                                                                                       #
+# Tools manuals: https://www.agap-ge2pop.org/macse/ , https://mafft.cbrc.jp/alignment/software/                                                                                                         #
 #                                                                                                                                                                                                       #
 #########################################################################################################################################################################################################
 #
@@ -40,7 +42,7 @@ OutputFolder_mafft="/home/pereira/2020_POSTDOC_MAIN/$Species_is/3_analysis/10_al
 OutputFolder_macse="/home/pereira/2020_POSTDOC_MAIN/$Species_is/3_analysis/10_alignment/2_macse_output"
 
 
-# Build scripts for alingment 
+# Build scripts for alingment.
 module load java/x64/8u121
 COUNTER=0
 IFS=$'\t'
@@ -63,7 +65,7 @@ do
     echo "java -jar /home/pereira/software/macse/macse_v2.05.jar -prog refineAlignment -align $OutputFolder_mafft/$Ingroup_gene.fasta -max_refine_iter 3 -local_realign_init 0.3 -local_realign_dec 0.2 -out_NT $OutputFolder_macse/1_NT/NT_$Ingroup_gene.fasta -out_AA $OutputFolder_macse/2_AA/AA_$Ingroup_gene.fasta" >> $COUNTER_four.script_$Ingroup_gene.sh
 
     # Wallace
-    #echo "sbatch --job-name=MAFMACSE --nodes=1 --ntasks=1 --ntasks-per-node=1 --cpus-per-task=1 --time=72:00:00 --mem=24G --error=job.%J.err --output=job.%J.out --mail-type=BEGIN,END,FAIL --mail-user=pereira@evolbio.mpg.de --partition=standard script_$Ingroup_gene.sh" >> sbatch_MAFFTMACSE.shls
+    #echo "sbatch --job-name=MAFMACSE --nodes=1 --ntasks=1 --ntasks-per-node=1 --cpus-per-task=1 --time=72:00:00 --mem=24G --error=job.%J.err --output=job.%J.out --mail-type=BEGIN,END,FAIL --mail-user=pereira@evolbio.mpg.de --partition=standard script_$Ingroup_gene.sh" >> sbatch_MAFFTMACSE.sh
 
     #echo "sleep 1" >> sbatch_MAFFTMACSE.sh
 
