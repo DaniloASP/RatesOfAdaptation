@@ -1,24 +1,33 @@
-#########################################################################################################
-# Written by Danilo APR 2021 - Kiel
+################################
+# Danilo Pereira - Kiel - 2023 #
+################################
 #
-# This script will take a single fasta file containing target species per gene (ingroup),
-#   and another single fasta containing outgroup sequence of the matching outgroup gene.
-# It will align the outgroup to the ingroup (the ingroup comes from VCF thus is aligned), avoiding gaps in the ingroup.
 #
-# Input needed:
-#             *1- A folder containing a key file
-#             *2- A folder containing multiple fasta files for each gene
-#             *3- A folder containing individual target species fasta genes.
 #
-# Note for next step in the pipeline: Gaps are coded as "-", and bpppop cannot read it. Thus, replace by "N" using "sed -i '' 's/-/N/g' *.fasta" 
+#########################################################################################################################################################################################################
+# This script will align the outgroup protein sequence to the ingroup alignemnt (the ingroup comes from VCF thus is aligned), avoiding gaps in the ingroup.                                             #
+#                                                                                                                                                                                                       #
+# Files needed:                                                                                                                                                                                         #
+#             * A folder containing a key file                                                                                                                                                          #                             
+#             * A folder containing multiple fasta files for each gene                                                                                                                                  #
+#             * A folder containing individual target species fasta genes                                                                                                                               #
+#                                                                                                                                                                                                       #
+# Note for next step in the pipeline: Gaps are coded as "-", and bpppop cannot read it. Thus, replace by "N" using "sed -i '' 's/-/N/g' *.fasta"                                                        #
+#                                                                                                                                                                                                       #    
+# IMPORTANT: USE BASH AND NOT ZSH. THIS SCRIPT USES ARRAY (while loop). CHANGE TO BASH USING `exec bash`                                                                                                #
+#                                                                                                                                                                                                       #                                   
+# IMPORTANT: There are degrees of optmization and speed for MACSE. In this script I use a 'relatively quick optimization' given by -max_refine_iter 3 -local_realign_init 0.3 -local_realign_dec 0.2    #
+#                                                                                                                                                                                                       #
+# IMPORTANT: This script uses array on wallace for running > 7000 jobs.                                                                                                                                 #
+#                                                                                                                                                                                                       #
+#########################################################################################################################################################################################################
 #
-# IMPORTANT: USE BASH AND NOT ZSH. THIS SCRIPT USES ARRAY (while loop). CHANGE TO BASH USING `exec bash`
 #
-# IMPORTANT: There are degrees of optmization and speed for MACSE. In this script I use a 'relatively quick optimization' given by -max_refine_iter 3 -local_realign_init 0.3 -local_realign_dec 0.2
 #
-# IMPORTANT: This script uses array on wallace for running > 7000 jobs.
-#
-#########################################################################################################
+######################################################################################################################
+#                                                    Start                                                           #
+######################################################################################################################
+
 ## change needed per species
 Species_is="Verticillium"
 Abb_is="Vdahliae"
@@ -31,8 +40,7 @@ OutputFolder_mafft="/home/pereira/2020_POSTDOC_MAIN/$Species_is/3_analysis/10_al
 OutputFolder_macse="/home/pereira/2020_POSTDOC_MAIN/$Species_is/3_analysis/10_alignment/2_macse_output"
 
 
-# MAFFILTER and MACSE
-
+# Build scripts for alingment 
 module load java/x64/8u121
 COUNTER=0
 IFS=$'\t'
@@ -82,5 +90,7 @@ sbatch --job-name=VD_s7 --array=1-7544 --nodes=1 --ntasks=1 --ntasks-per-node=1 
 
 
 
-
+######################################################################################################################
+#                                                      END                                                           #
+######################################################################################################################
 
