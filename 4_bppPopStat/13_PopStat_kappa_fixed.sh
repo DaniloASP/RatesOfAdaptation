@@ -4,45 +4,20 @@
 #
 #
 #
-################################################################################################################
-#   This script will summarize the output of ANGSD into a single table                                         #
-#                                                                                                              #
-# Files needed:                                                                                                #
-#             * output files for ANGSD calculation of Watterson's estimator theta                              #
-#                                                                                                              #
-################################################################################################################
+#######################################################################################################################
+#   This script will run bppPopStat with fixed kappa per species and output counts of polymorphism and divergence     #                                  #
+#                                                                                                                     #
+# Files needed:                                                                                                       #
+#             * individual fasta file for each gene alignment (gap as N)                                              #
+#             * parameter file with FIXED kappa (provided "PN_fixedKAPPA.bpp")                                        #
+#                                                                                                                     #
+#######################################################################################################################
 #
 #
 #
 ######################################################################################################################
 #                                                    Start                                                           #
 ######################################################################################################################
-
-
-
-# manual http://biopp.univ-montp2.fr/manual/html/bppsuite/2.4.0/bppsuite.html#Available-statistics
-# go to 4.11 BppPopStats: Bio++ Population Genetics Statistics
-
-# dN_dS
-# For codon sequences only. Build the consensus sequence of both ingroup and outgroup alignments and fit a Yang and Nielsen model of 
-# codon sequence evolution with a maximum likelihood approach. Reports the estimated parameters ***omega*** (dN / dS ratio) and 
-# kappa (transitions / transversions ratio), as well as the divergence between the two sequences.
-
-# Installing this shit is hell!!!
-
-# run examples
-# {program} parameter1=value1 parameter2=value2 ... parameterN=valueN
-# or
-# {program} param=option_file
-
-# run 5 - After Julien feedback on March 30
-
-# Necessary variables:
-# 1 - $(input_FOLDER)
-# 2 - $(output_FOLDER)
-# 3 - $(param_FILE)
-# 4 - $targetspp_ID
-# 4 - $outgroup_ID
 
 # per species
 Species_is="Verticillium"
@@ -97,7 +72,7 @@ echo -e 'sample_ID=$(cat list_of_jobs.txt | grep "$SLURM_ARRAY_TASK_ID_four.scri
 echo -e '# run the command' >> array_batch.sh
 echo -e 'bash $sample_ID' >> array_batch.sh
 
-# submit
+# submit to slurm queue
 sbatch --job-name=VD_sct13 --array=1-3958%100 --nodes=1 --ntasks=1 --ntasks-per-node=1 --cpus-per-task=1 --time=48:00:00 --mem=18G --error=job_%A_%a.err --output=job_%A_%a.out --mail-type=NONE --mail-user=pereira@evolbio.mpg.de --partition=standard array_batch.sh
 
 ######################################################################################################################
