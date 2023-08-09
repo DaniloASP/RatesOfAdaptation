@@ -1,15 +1,27 @@
-########################################################################################
-#### This script is intended to copy final set of genes, replace gapes as - to N   #####
-########################################################################################
-
+################################
+# Danilo Pereira - Kiel - 2023 #
+################################
+#
+#
+#
+################################################################################################################
+#   This script will filter for alignments with anything different from 1 stopcodon per gene alignment         #
+#                                                                                                              #
+# Files needed:                                                                                                #
+#             * log files per gene alignment generated in the previous script                                  #
+#                                                                                                              #
+################################################################################################################
+#
+#
+#
+######################################################################################################################
+#                                                    Start                                                           #
+######################################################################################################################
 Species_is="Verticillium"
 Abb_is="Vdahliae"
 
-cd /home/pereira/2020_POSTDOC_MAIN/$Species_is/3_analysis/0_scripts/13_popstat/1_loose_kappa
 
-### no modification needed
 #
-
 input_FOLDER="/home/pereira/2020_POSTDOC_MAIN/$Species_is/3_analysis/15_popstat/1_loose_kappa"
 mkdir /home/pereira/2020_POSTDOC_MAIN/$Species_is/3_analysis/15_popstat/1.1_copy_log
 copy_folder="/home/pereira/2020_POSTDOC_MAIN/$Species_is/3_analysis/15_popstat/1.1_copy_log"
@@ -55,3 +67,9 @@ echo 'cp /home/pereira/2020_POSTDOC_MAIN/Neurospora/3_analysis/11_popstat/0_para
 bash 12_1_stopcodon_filter.sh
 
 # kappa for final gene set is in $input_FOLDER/4_kappa_final.txt
+
+
+
+######################################################################################################################
+#                                                      END                                                           #
+######################################################################################################################

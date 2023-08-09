@@ -8,7 +8,7 @@
 #   This script will take the each gene alignment and calculate kappa         #
 #                                                                             #
 # Files needed:                                                               #
-#             * Output from script 10_Gap_threshold.v2.sh                     #
+#             * individual fasta file for each gene alignment (gap as N)      #
 #             * parameter file to get kappa (provided "EstimateKAPPA.bpp")    #
 #                                                                             #
 ###############################################################################

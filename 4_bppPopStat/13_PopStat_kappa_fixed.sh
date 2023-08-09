@@ -1,3 +1,25 @@
+################################
+# Danilo Pereira - Kiel - 2023 #
+################################
+#
+#
+#
+################################################################################################################
+#   This script will summarize the output of ANGSD into a single table                                         #
+#                                                                                                              #
+# Files needed:                                                                                                #
+#             * output files for ANGSD calculation of Watterson's estimator theta                              #
+#                                                                                                              #
+################################################################################################################
+#
+#
+#
+######################################################################################################################
+#                                                    Start                                                           #
+######################################################################################################################
+
+
+
 # manual http://biopp.univ-montp2.fr/manual/html/bppsuite/2.4.0/bppsuite.html#Available-statistics
 # go to 4.11 BppPopStats: Bio++ Population Genetics Statistics
 
@@ -78,3 +100,6 @@ echo -e 'bash $sample_ID' >> array_batch.sh
 # submit
 sbatch --job-name=VD_sct13 --array=1-3958%100 --nodes=1 --ntasks=1 --ntasks-per-node=1 --cpus-per-task=1 --time=48:00:00 --mem=18G --error=job_%A_%a.err --output=job_%A_%a.out --mail-type=NONE --mail-user=pereira@evolbio.mpg.de --partition=standard array_batch.sh
 
+######################################################################################################################
+#                                                      END                                                           #
+######################################################################################################################
