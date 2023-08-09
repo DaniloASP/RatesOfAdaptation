@@ -1,0 +1,48 @@
+# ---------------
+# Input sequences
+# ---------------
+
+# The alphabet to use:
+alphabet=Codon(letter=DNA)
+genetic_code=Standard
+
+# The sequence file to use (sequences must be aligned!)
+input.sequence.file=$(input_FOLDER)/$(isolate_fasta).fasta
+input.sequence.stop_codons_policy=RemoveAll
+
+# The file format:
+input.sequence.format=Fasta
+
+input.sequence.sites_to_use=complete
+
+# Name the sequence acting as outgrip
+input.sequence.outgroup.name=$(outgroup_in_fasta)
+
+
+
+# ----------------
+# Analysis
+# ----------------
+
+# In the first run let it calculate kappa. In the second, use the weighted avarage and set kappa.
+# kappa for further analyses
+kappa = 1.64 
+estimate.kappa=no
+estimate.ancestor = yes
+estimate.sample_ingroup = no
+estimate.sample_ingroup.size = 0
+
+input.tree.method = bionj
+optimization = FullD
+optimization.tolerance = 1e-6
+optimization.ignore_parameters = BrLen, YN98.kappa
+
+# Where to output results
+logfile=$(output_FOLDER)/$(isolate_fasta).log
+
+pop.stats=CodonSiteStatistics(output.file=$(output_FOLDER)/$(isolate_fasta).codon.csv),SiteFrequencies,Watterson75,Tajima83,TajimaD,TajimaD(positions=synonymous),TajimaD(positions=non-synonymous),PiN_PiS,MKT
+
+
+
+
+

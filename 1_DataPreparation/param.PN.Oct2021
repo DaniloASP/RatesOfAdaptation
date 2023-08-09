@@ -1,0 +1,25 @@
+input.file=$(input_Folder)/$(Isolate).genome.fasta  //Input maf/fasta file
+input.file.compression=none
+input.format=Fasta(zero_based=no)
+output.log=$(output_Folder)/$(Isolate).maffilter.log //Output log file
+
+
+maf.filter=  \
+	ExtractFeature(                                \
+                ref_species=Pnodorum, \
+                feature.file=$(dependencies_Folder)/Sn15.2021_annotation.geneGroupA.isoformA.noSpliceAlt.checked.gff,                         \
+                feature.format=GFF,                            \
+                feature.type=CDS,             \
+                compression=gzip,                   \
+	        complete=yes,                                  \
+                ignore_strand=no),\
+        SequenceStatistics(                              \
+                statistics=(BlockLength),          \
+                ref_species=Pnodorum,                            \
+                file=$(output_Folder)/$(Isolate).statistics.csv),                \
+        OutputAlignments(                       \
+                file=$(output_Folder)/$(Isolate).filtered.fasta,             \
+                compression=none,                   \
+                format=Fasta,                     \
+                mask=no,                            \
+                coordinates=yes)       

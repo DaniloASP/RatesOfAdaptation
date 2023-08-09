@@ -4,33 +4,26 @@
 #
 #
 #
-#############################################################################################################
-# This script is intended to itinerate over the gap scores and fail alignments given a threshold            #
-#                                                                                                           #
-# Files needed:                                                                                             #
-#             * Output from script 10_Gap_threshold.v2.sh                                                   #
-#                                                                                                           #
-#                                                                                                           #
-#############################################################################################################
+###############################################################################
+#   This script will prepare files and sequences for input in bppPopStat      #
+#                                                                             #
+# Files needed:                                                               #
+#             * Output from script 10_Gap_threshold.v2.sh                     #
+#                                                                             #
+#                                                                             #
+###############################################################################
 #
 #
 #
 ######################################################################################################################
 #                                                    Start                                                           #
 ######################################################################################################################
-
-
-########################################################################################
-#### This script is intended to copy final set of genes, replace gapes as - to N   #####
-########################################################################################
-
 Species_is="Verticillium"
 Abb_is="Vdahliae"
 
 cd /home/pereira/2020_POSTDOC_MAIN/$Species_is/3_analysis/0_scripts/13_popstat/1_loose_kappa
 
-### no modification needed
-#
+# Path to variables
 input_FOLDER="/home/pereira/2020_POSTDOC_MAIN/$Species_is/3_analysis/10_alignment/3_filtering"
 #input_FOLDER="/home/pereira/2020_POSTDOC_MAIN/Candida_auris/3_analysis/0_scripts/13_popstat/1_loose_kappa/test"
 output_FOLDER="/home/pereira/2020_POSTDOC_MAIN/$Species_is/3_analysis/10_alignment/4_final_gene_set"
@@ -38,7 +31,6 @@ output_FOLDER="/home/pereira/2020_POSTDOC_MAIN/$Species_is/3_analysis/10_alignme
 ##############################################
 ### Part 1 - Copy files from MACSE NT run1 ###
 ##############################################
-
 echo -e '#!/bin/bash' > copy_run1.sh
 echo "input_FOLDER=$input_FOLDER" >> copy_run1.sh
 echo "output_FOLDER=$output_FOLDER" >> copy_run1.sh
@@ -48,12 +40,6 @@ echo "cp $input_FOLDER/*.fasta $output_FOLDER" >> copy_run1.sh
 ####################################################
 ### Part 2 - get output sequence from each gene  ###
 ####################################################
-# A key file is present locally, generated from the python threshold script, the file was made from run 1 aPB run 2 aPB is named the same `4_file_outgroup_KEY.txt`. Merge it aPB get unique values
-#cat 4_* > 0_PN_gene_outgroup.txt
-#sort -u 0_PN_gene_outgroup.txt > 0_genes_popstat_run1.txt # it has 4256, 2 more then in 7_geneset_final (has 4254), because I cancelled to jobs running too long. Check entry on # 06 JUL 2021
-
-# do not use to one above, use this one:
-
 echo 'for fasta_file in $output_FOLDER/*fasta' >> copy_run1.sh 
 echo 'do' >> copy_run1.sh
 echo 'basename $fasta_file >> 1_gene_name.txt' >> copy_run1.sh

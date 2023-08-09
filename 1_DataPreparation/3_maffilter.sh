@@ -9,7 +9,7 @@
 #                                                                                                                                                                           #
 # Files needed:                                                                                                                                                             #
 # Files required:   * Reference genome, with core chr only, in fasta format and fai [samtools faidx Sn15.2021_genome.CORE.fa] (used by bowtie2, but CORE only)              #
-#                   * param file for maffilter                                                                                                                              #
+#                   * param file for maffilter (provided on github - param.PN.Oct2021)                                                                                      #
 #                   * folder with new genomes                                                                                                                               #
 #                   * GFF file. Matching contigs/chromosome with the genome sample. NOTE: Very important to have a standard naming for the CDSs and genes.                  #
 #                                                                                                                                                                           #
@@ -78,13 +78,13 @@ done < key_NCBIcode_contig.txt
 # Here I use maffilter to extract CDS/exon from each sample genome file #
 #########################################################################
 
-# maffilter Wallace
+# maffilter Wallace.
 cd /home/pereira/2020_POSTDOC_MAIN/$Species_is/3_analysis/0_scripts/4_maffilter_cds_extr
 
 input_Folder="/home/pereira/2020_POSTDOC_MAIN/$Species_is/3_analysis/3_consensus"
 dependencies_Folder="/home/pereira/2020_POSTDOC_MAIN/$Species_is/3_analysis/4_maffilter/0_files_maffilter"
 output_Folder="/home/pereira/2020_POSTDOC_MAIN/$Species_is/3_analysis/4_maffilter/1_maffilter_output"
-param_file="param.VD.FEB2022"
+param_file="param.PN.Oct2021" # parameter file provided 
 
 # loop
 IFS="|"
