@@ -1,4 +1,22 @@
-# 16 JUN 2022
+################################
+# Danilo Pereira - Kiel - 2023 #
+################################
+#
+#
+#
+#######################################################################################################################
+#   This script will take the SFS files and will calculate the rates of adaptation omegaA, omegaNA and alpha          #
+#                                                                                                                     #
+# Files needed:                                                                                                       #
+#             * SFS files                                                                                             #
+#                                                                                                                     #
+#######################################################################################################################
+#
+#
+#
+######################################################################################################################
+#                                                    Start                                                           #
+######################################################################################################################
 # CAU_cluster
 
 # manual https://github.com/BioPP/grapes
@@ -24,8 +42,6 @@ mkdir /gxfs_work1/cau/sunbo481/projects/0_2020_POSTDOC_MAIN/$Species_is/3_analys
 mkdir /gxfs_work1/cau/sunbo481/projects/0_2020_POSTDOC_MAIN/$Species_is/3_analysis/16_grapes/9_recombination_15cat/3_singleRun/0_bin
 mkdir /gxfs_work1/cau/sunbo481/projects/0_2020_POSTDOC_MAIN/$Species_is/3_analysis/16_grapes/9_recombination_15cat/3_singleRun/1_input
 mkdir /gxfs_work1/cau/sunbo481/projects/0_2020_POSTDOC_MAIN/$Species_is/3_analysis/16_grapes/9_recombination_15cat/3_singleRun/2_output
-
-# move files to rsync -v -a *.tar.gz sunbo481@nesh-fe.rz.uni-kiel.de:"/gxfs_work1/cau/sunbo481/projects/0_2020_POSTDOC_MAIN/"
 
 mv /gxfs_work1/cau/sunbo481/projects/0_2020_POSTDOC_MAIN/2_RealData_mean.tar.gz /gxfs_work1/cau/sunbo481/projects/0_2020_POSTDOC_MAIN/$Species_is/3_analysis/16_grapes/9_recombination_15cat/3_singleRun/1_input 
 cd /gxfs_work1/cau/sunbo481/projects/0_2020_POSTDOC_MAIN/$Species_is/3_analysis/16_grapes/9_recombination_15cat/3_singleRun/1_input/ && tar -xzf 2_RealData_mean.tar.gz
@@ -58,7 +74,7 @@ do
 echo "/gxfs_home/cau/sunbo481/software/BPP_danilo3/bin/grapes -in $input_FILE/$line.sfs -out $output_FOLDER/$line.res -model $Best_grapes_model_all -no_div_param" >> jobs_SFS_run_for_mean.sh
 done < SFS_run_for_mean.txt
 
-cat SFS_run_for_mean.txt | wc -l # this is the number of jobs in the array 300
+cat SFS_run_for_mean.txt | wc -l # this is the number of jobs in the array 
 max_array_num=$( cat SFS_run_for_mean.txt | wc -l )
 
 
@@ -72,3 +88,10 @@ echo -e '$sample_ID' >> array_run_for_mean.sh
 echo "sbatch --job-name="$Abb_slurm" --array=1-$max_array_num --nodes=1 --ntasks=1 --ntasks-per-node=1 --cpus-per-task=1 --time=48:00:00 --mem=32G --error=log/log.%A_%a.err --output=log/log.%A_%a.out --partition=cluster array_run_for_mean.sh" > submit_1st.sh
 
 bash submit_1st.sh
+
+######################################################################################################################
+#                                                      END                                                           #
+######################################################################################################################
+
+
+

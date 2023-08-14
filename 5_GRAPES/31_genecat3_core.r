@@ -55,9 +55,9 @@ Popstat_Output=paste0("/home/pereira/2020_POSTDOC_MAIN/",Species_is,"/3_analysis
 get_PAV_genes=paste0("cp /home/pereira/2020_POSTDOC_MAIN/0_CommonAnalysis/3_CNVnator_allspp/",{Abb_slurm},".GenePAV.txt .")
 system(get_PAV_genes)
 
-############################################################
-# part 1 - load functions
-############################################################
+###########################
+# part 1 - load functions #
+###########################
 
 ###
 ### Unfolded Site Frequency Spectrum
@@ -120,9 +120,9 @@ write.grapes.unfolded <- function(genes, file, nbChr = Num_chr, prefix = Popstat
 }
 
 
-###################################################################################
-# part 2 - load data about secreted proteins and effectors and create 3 categories
-###################################################################################
+####################################################################################
+# part 2 - load data about secreted proteins and effectors and create 3 categories #
+####################################################################################
 
 # load data
 secretome_file <- system("ls *anno_secretome.names.csv", intern = TRUE)
@@ -163,9 +163,9 @@ geneset_POPSTAT$Species <- Species_is
 write.table(geneset_POPSTAT,"Gene_category_list.txt", quote=F, sep="\t", row.names = F, col.names=T)
 
 
-############################################################################
-# part 3 - CREATE OUTPUT FILES FOR BOOTSTRAP
-############################################################################
+##############################################
+# part 3 - CREATE OUTPUT FILES FOR BOOTSTRAP #
+##############################################
 
 # create a loop to extract the gene sample from each recombination category
 # We conduct bootstraps to get confidence intervals of estimates (grapes run after best model is known)
@@ -218,9 +218,9 @@ Tar_gz_file=paste0("tar -zcvf 0_FullDataset_Bootstrap.tar.gz 0_FullDataset_Boots
 system(Tar_gz_file) # check PerGene.txt file !!!!!!!!!!
 
 
-############################################################################
-# part 4 - CREATE OUTPUT FILES FOR PERMUTATION
-############################################################################
+################################################
+# part 4 - CREATE OUTPUT FILES FOR PERMUTATION #
+################################################
 dir.create("1_FullDataset_Permutation")
 
 sfs.FullDataset <- get.sfs.grapes.unfolded(geneset_POPSTAT$Name, nbChr = Num_chr, prefix = Popstat_Output)
@@ -255,9 +255,9 @@ permute(sfs.FullDataset, 1000, Gene_category_perm, prefix = "FullData")
 Tar_gz_file=paste0("tar -zcvf 1_FullDataset_Permutation.tar.gz 1_FullDataset_Permutation")
 system(Tar_gz_file) # check PerGene.txt file !!!!!!!!!!
 
-############################################################################
-# part 4 - CREATE OUTPUT FILES FOR SINGLE RUN OF EACH CATEGORY 
-############################################################################
+#################################################################
+# part 4 - CREATE OUTPUT FILES FOR SINGLE RUN OF EACH CATEGORY  #
+#################################################################
 dir.create("2_FullDataset_indv_category")
 
 ## NonSecreted
@@ -301,8 +301,6 @@ write.grapes.unfolded(geneset_POPSTAT$Name,
 
 Tar_gz_file=paste0("tar -zcvf 2_FullDataset_indv_cat.tar.gz *genes.sfs")
 system(Tar_gz_file) # check PerGene.txt file !!!!!!!!!!
-
-### end
 
 
 ######################################################################################################################

@@ -35,8 +35,6 @@ module load gcc/10.2.0
 module load eigen/3.3.8
 module load gsl/2.5
 
-# move files to rsync -v -a * sunbo481@nesh-fe.rz.uni-kiel.de:"/gxfs_work1/cau/sunbo481/projects/0_2020_POSTDOC_MAIN/"
-
 mv /gxfs_work1/cau/sunbo481/projects/0_2020_POSTDOC_MAIN/0_FullDataset_Bootstrap.tar.gz /gxfs_work1/cau/sunbo481/projects/0_2020_POSTDOC_MAIN/$Species_is/3_analysis/16_grapes/7_Gene_function3_core/0_all_genes/1_bootstrap/1_input/ 
 cd /gxfs_work1/cau/sunbo481/projects/0_2020_POSTDOC_MAIN/$Species_is/3_analysis/16_grapes/7_Gene_function3_core/0_all_genes/1_bootstrap/1_input/ && tar -xzf 0_FullDataset_Bootstrap.tar.gz
 
