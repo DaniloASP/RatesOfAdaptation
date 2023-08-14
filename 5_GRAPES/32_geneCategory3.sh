@@ -160,9 +160,9 @@ echo "sbatch --job-name="$Abb_slurm"_1st --array=1-3 --nodes=1 --ntasks=1 --ntas
 
 bash submit_1st.sh
 
-#####################################################################
-#            all genes run for the SPECIES BEST MODEL               #
-#####################################################################
+###########################################################################
+#            all genes run for the SPECIES - get BEST MODEL               #
+###########################################################################
 
 cd /gxfs_work1/cau/sunbo481/projects/0_2020_POSTDOC_MAIN/$Species_is/3_analysis/16_grapes/7_Gene_function3_core/0_all_genes/3_singleRun/0_bin
 
