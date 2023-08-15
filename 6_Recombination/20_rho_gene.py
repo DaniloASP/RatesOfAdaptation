@@ -28,7 +28,7 @@ output_folder = "/home/pereira/2020_POSTDOC_MAIN/Zymoseptoria_RUN2/3_analysis/13
 
 contig_length_file=f"{contig_info_folder}/contig_list_length.txt"
 
-window_size_bp = int(20000)
+window_size_bp = int(20000) # 20kb window
 
 # loop over LDhat output files and proceed with analysis for each
 for file in (glob.glob(f"{input_files}/rep_*/*")):
