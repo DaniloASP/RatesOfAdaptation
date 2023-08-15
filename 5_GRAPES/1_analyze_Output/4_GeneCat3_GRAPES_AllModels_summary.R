@@ -5,7 +5,7 @@
 #
 #
 #######################################################################################################################
-#   This script will sumirize a GRAPES run on the gene categories using all models available                          #
+#   This script will summarize a GRAPES run on the gene categories using all models available                          #
 #                                                                                                                     #
 # Files needed:                                                                                                       #
 #             * Output files from GRAPES (*.res)                                                                      #
