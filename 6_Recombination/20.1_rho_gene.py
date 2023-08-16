@@ -4,13 +4,13 @@
 #
 #
 #
-########################################################################
-#   This script will take the output of LDhat and parse it             #
-#                                                                      #
-# Files needed:                                                        #
-#             * Output files from LDhat parsed in the previous script  #
-#                                                                      #
-########################################################################
+#########################################################################
+#   This script will take the output of LDhat and parse it              #
+#                                                                       #
+# Files needed:                                                         #
+#             * Output files from LDhat parsed in the previous script   #
+#                                                                       #
+#########################################################################
 #
 #
 #
