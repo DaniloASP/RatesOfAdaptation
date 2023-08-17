@@ -31,7 +31,9 @@ These scripts use a series of tools that you might need depending on the step yo
 
 **LDhat** is used to calculate the population recombination rate (rho). Installation and look-up tables can be found in https://github.com/auton1/LDhat
 
+**ANGSD** is used to estimate Watterson $\theta$ for the selection of the most appropriate look-up table from LDhat. Installation instructions can be found in https://github.com/ANGSD/angsd
 
+**GRAPES** is used to estimate the rates of adaptive evolution. Installation instructions can be found in https://github.com/BioPP/grapes
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
