@@ -2,7 +2,7 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
-# RatesOfAdaptation
+# Estimating the rates of adaptive evolution in fungal species
 
 
 
