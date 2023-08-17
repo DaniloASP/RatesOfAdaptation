@@ -37,6 +37,8 @@ These scripts use a series of tools that you might need depending on the step yo
 
 # Usage
 
+**Data preparation:** Raw illumina reads are trimmed, filtered for quality and mapped onto a reference genome. After hardfiltering and sanity checks, a consensus genome is extracted from each sample in the VCF, and Maffilter is used to extract the coding region of reach consensus genome. A custom python script is then used to merge all conding regions per gene. Scripts in [1_DataPreparation](https://github.com/DaniloASP/RatesOfAdaptation/tree/main/1_DataPreparation).
+
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
