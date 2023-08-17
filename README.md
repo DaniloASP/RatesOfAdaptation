@@ -8,7 +8,7 @@
 
 -    [Description](#description)
 -    [Installation](#installation)
-
+-    [Usage](#usage)
 
 # Description
 These scripts are used for the calculation of the rates of adaptation from raw Illumina reads. The rates of adaptation are estimated by means of:
@@ -34,6 +34,9 @@ These scripts use a series of tools that you might need depending on the step yo
 **ANGSD** is used to estimate Watterson $\theta$ for the selection of the most appropriate look-up table from LDhat. Installation instructions can be found in https://github.com/ANGSD/angsd
 
 **GRAPES** is used to estimate the rates of adaptive evolution. Installation instructions can be found in https://github.com/BioPP/grapes
+
+# Usage
+
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
