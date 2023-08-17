@@ -2,7 +2,7 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
-# Estimating the rates of adaptive evolution in fungal species
+# Estimating the rates of adaptive evolution in fungal species using whole-genome sequences
 
 
 
