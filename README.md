@@ -45,7 +45,9 @@ These scripts use a series of tools that you might need depending on the step yo
 
 **bppPopStat:** Calculation of kappa, polymorphism and substitutions counts are performed using this tool on each gene individually. A first run is performed for the estimation of the median kappa across all genes. Here, the distribution of kappa must be unimodal. Next, kappa is fixed to the previously determined median and the counts of mutations are performed. [4_bppPopStat](https://github.com/DaniloASP/RatesOfAdaptation/tree/main/4_bppPopStat).
 
-![Example of kappa estimations in the fungus *Zymoseptoria tritici*](https://github.com/DaniloASP/RatesOfAdaptation/blob/main/4_bppPopStat/Zymoseptoriatritici.485.4935genes.kappa3.05.core.jpeg)
+<img src="https://github.com/DaniloASP/RatesOfAdaptation/blob/main/4_bppPopStat/Zymoseptoriatritici.485.4935genes.kappa3.05.core.jpeg" alt="drawing" width="600"/>
+
+Fig1. Example of kappa estimations in the fungus *Zymoseptoria tritici*
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
