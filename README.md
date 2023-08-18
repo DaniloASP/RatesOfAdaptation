@@ -9,6 +9,7 @@
 -    [Description](#description)
 -    [Installation](#installation)
 -    [Usage](#usage)
+-    [Disclaimer](#disclaimer)
 
 # Description
 These scripts are used for the calculation of the rates of adaptation from raw Illumina reads. The rates of adaptation are estimated by means of:
@@ -69,6 +70,14 @@ These scripts use a series of tools that you might need depending on the step yo
 **Identification of accessory genes:** First CNVnator was used to identify deleted regions across the genome of each sample. Runs were performed on each BAM file. Next, the coordinates of deletions and protein-coding genes were overlaped and gene coordinates completly within deletions were considered missing from a sample, and thus acessory. Scripts in [7_Identify_Accessory_genes](https://github.com/DaniloASP/RatesOfAdaptation/tree/main/7_Identify_Accessory_genes).
 
 **Generalized least squares modeling:** To access the significance of correlations and account for phylogenetic signals a generalized least squares modeling procedure was implemented. The following effects were tested against the rates at adaptation, at both genome-wide and species-wide levels: (i) gene categories (non-secreted, secreted but not effectors and effectors), (ii) recombination ($\rho$), (iii) effective population size (using the neutral genetic diversity $\pi$<sub>S</sub> as proxy) were tested. Scripts in [8_Generalized_least_squares_modeling](https://github.com/DaniloASP/RatesOfAdaptation/tree/main/8_Generalized_least_squares_modeling)
+
+
+# Disclaimer
+
+One important point when scalating to multiple species is related to how annotation files (GFF) are coded and how to extract correct information from it.
+
+
+
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
