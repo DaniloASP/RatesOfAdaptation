@@ -35,6 +35,10 @@ These scripts use a series of tools that you might need depending on the step yo
 
 **GRAPES** is used to estimate the rates of adaptive evolution. Installation instructions can be found in https://github.com/BioPP/grapes
 
+**SPAdes** is used to perform de novo assembly on the raw reads from the outgroup species. Installation instructions can be found in https://github.com/ablab/spades
+
+**BRAKER2** is used to predict genes on the outgroup assembled genomes. Installation instructions can be found in https://github.com/Gaius-Augustus/BRAKER
+
 # Usage
 
 **Data preparation:** Raw illumina reads are trimmed, filtered for quality and mapped onto a reference genome. After hardfiltering and sanity checks, a consensus genome is extracted from each sample in the VCF, and Maffilter is used to extract the coding region of reach consensus genome. A custom python script is then used to merge all conding regions per gene. Scripts in [1_DataPreparation](https://github.com/DaniloASP/RatesOfAdaptation/tree/main/1_DataPreparation). For the outgroup species, raw genome reads were downloaded from NCBI and de novo assembly and gene predictions were performed. Scripts in [9_Outgroup_assembly_gene_prediction](https://github.com/DaniloASP/RatesOfAdaptation/tree/main/9_Outgroup_assembly_gene_prediction)
