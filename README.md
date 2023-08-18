@@ -41,6 +41,7 @@ These scripts use a series of tools that you might need depending on the step yo
 
 **Gene alignment:** Orthologous genes will be identified among the reference isolates. For the population data, individual genes files will extracted into fasta files containing isolate's sequence and the outgroup sequence will be added. Mafft and MACSE will be used for the alignment and polishment, and custom python scripts will be used for quality control. Scripts in [2_GeneAlignment](https://github.com/DaniloASP/RatesOfAdaptation/tree/main/2_GeneAlignment).
 
+**Protein functional analysis**: Using interpro scan and effectorP to classify proteins into non-secreted, secreted but not effector and predicted effectors. Scripts in [3_Protein_FunctionalAnalysis](https://github.com/DaniloASP/RatesOfAdaptation/tree/main/3_Protein_FunctionalAnalysis).
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
