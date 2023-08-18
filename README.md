@@ -49,7 +49,7 @@ These scripts use a series of tools that you might need depending on the step yo
 
 Fig1. Example of kappa estimations in the fungus *Zymoseptoria tritici*
 
-**GRAPES:** Calculation of the rates of adaptive evolution. First, an initial run is performed for the identification of the best model for the distribution of fitness effects (DFE) using `-model all`. All subsequent runs are performed with the best model per species. In adition, the flag `-no_div_param` was used in all runs. All scripts for the generation of in-put files and for parsing the output files are provided in [5_GRAPES](https://github.com/DaniloASP/RatesOfAdaptation/tree/main/5_GRAPES).
+**GRAPES:** Calculation of the rates of adaptive evolution based on the unfolded SFS of a group of protein coding genes. Note that calculations are not based on single genes. First, an initial run is performed for the identification of the best model for the distribution of fitness effects (DFE) using `-model all`. All subsequent runs are performed with the best model per species. In adition, the flag `-no_div_param` was used in all runs. All scripts for the generation of in-put files and for parsing the output files are provided in [5_GRAPES](https://github.com/DaniloASP/RatesOfAdaptation/tree/main/5_GRAPES).
 
 
 
