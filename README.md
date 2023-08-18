@@ -43,6 +43,11 @@ These scripts use a series of tools that you might need depending on the step yo
 
 **Protein functional analysis**: Using interpro scan and effectorP to classify proteins into non-secreted, secreted but not effector and predicted effectors. Scripts in [3_Protein_FunctionalAnalysis](https://github.com/DaniloASP/RatesOfAdaptation/tree/main/3_Protein_FunctionalAnalysis).
 
+**bppPopStat:** Calculation of kappa, polymorphism and substitutions counts are performed using this tool on each gene individually. A first run is performed for the estimation of the median kappa across all genes. Here, the distribution of kappa must be unimodal. Next, kappa is fixed to the previously determined median and the counts of mutations are performed. [4_bppPopStat](https://github.com/DaniloASP/RatesOfAdaptation/tree/main/4_bppPopStat).
+
+![Example of kappa estimations in the fungus *Zymoseptoria tritici*](https://github.com/DaniloASP/RatesOfAdaptation/blob/main/4_bppPopStat/Zymoseptoriatritici.485.4935genes.kappa3.05.core.jpeg)
+
+
 <!-- MARKDOWN LINKS & IMAGES -->
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
 [license-url]: https://github.com/DaniloASP/RatesOfAdaptation/blob/main/LICENSE
