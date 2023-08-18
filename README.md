@@ -53,6 +53,8 @@ Fig1. Example of kappa estimations in the fungus *Zymoseptoria tritici*
 
 **Recombination rate:** Calculation of the population recombination rate paramenter ($\rho$). The selection of the look-up table was based on Watterson $\theta$ as a proxy for the population mutation rate. Species with `n>100` samples were splitted into multiple runs with random selection of samples per run. Next, with information of $\rho$ across the genome, gene groups were selected based on the local $\rho$. The groups were used next into GRAPES for the calculation of the rates of adaptation. Scripts needed to run LDhat and a custum R-script for the grouping of genes based on $\rho$ are provided in [6_Recombination](https://github.com/DaniloASP/RatesOfAdaptation/tree/main/6_Recombination).  
 
+**Identification of accessory genes:** First CNVnator was used to identify deleted regions across the genome of each sample. Runs were performed on each BAM file. Next, the coordinates of deletions and protein-coding genes were overlaped and gene coordinates completly within deletions were considered missing from a sample, and thus acessory. Scripts in [7_Identify_Accessory_genes](https://github.com/DaniloASP/RatesOfAdaptation/tree/main/7_Identify_Accessory_genes).
+
 <!-- MARKDOWN LINKS & IMAGES -->
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
 [license-url]: https://github.com/DaniloASP/RatesOfAdaptation/blob/main/LICENSE
