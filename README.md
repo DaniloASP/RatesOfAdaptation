@@ -49,9 +49,9 @@ These scripts use a series of tools that you might need depending on the step yo
 
 Fig1. Example of kappa estimations in the fungus *Zymoseptoria tritici*
 
-**GRAPES:** Calculation of the rates of adaptive evolution based on the unfolded SFS of a group of protein coding genes. Note that calculations are not based on single genes. First, an initial run is performed for the identification of the best model for the distribution of fitness effects (DFE) using `-model all`. All subsequent runs are performed with the best model per species. In adition, the flag `-no_div_param` was used in all runs. All scripts for the generation of in-put files and for parsing the output files are provided in [5_GRAPES](https://github.com/DaniloASP/RatesOfAdaptation/tree/main/5_GRAPES).
+**GRAPES:** Calculation of the rates of adaptive evolution based on the unfolded SFS of a group of protein coding genes. Note that calculations are not based on single genes. First, an initial run is performed for the identification of the best model for the distribution of fitness effects (DFE) using `-model all`. All subsequent runs are performed with the best model per species. In adition, the flag `-no_div_param` was used in all runs. All scripts for the generation of in-put files, bootstraps, permutation and for parsing the output files are provided in [5_GRAPES](https://github.com/DaniloASP/RatesOfAdaptation/tree/main/5_GRAPES).
 
-
+**Recombination rate:** Calculation of the population recombination rate paramenter ($\rho$). The selection of the look-up table was based on Watterson $\theta$ as a proxy for the population mutation rate. Species with `n>100` samples were splitted into multiple runs with random selection of samples per run. Next, with information of $\rho$ across the genome, gene groups were selected based on the local $\rho$. The groups were used next into GRAPES for the calculation of the rates of adaptation. Scripts needed to run LDhat and a custum R-script for the grouping of genes based on $\rho$ are provided in [6_Recombination](https://github.com/DaniloASP/RatesOfAdaptation/tree/main/6_Recombination).  
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
