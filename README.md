@@ -49,6 +49,9 @@ These scripts use a series of tools that you might need depending on the step yo
 
 Fig1. Example of kappa estimations in the fungus *Zymoseptoria tritici*
 
+**GRAPES:** Calculation of the rates of adaptive evolution. First, an initial run is performed for the identification of the best model for the distribution of fitness effects (DFE) using `-model all`. All subsequent runs are performed with the best model per species. In adition, the flag `-no_div_param` was used in all runs.
+
+
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
