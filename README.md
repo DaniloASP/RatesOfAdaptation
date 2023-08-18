@@ -19,6 +19,12 @@ These scripts are used for the calculation of the rates of adaptation from raw I
 # Installation
 These scripts use a series of tools that you might need depending on the step you want to run. Some important tools are:
 
+**Trimmomatic** is used to trim adaptors and low quality reads from all illumina data. Instruction can be found in https://speciationgenomics.github.io/Trimmomatic/
+
+**bowtie2** is used to map trimmed reads on the referece genome of each target species. Instruction can be found in https://github.com/BenLangmead/bowtie2
+
+**GATK** is used to perform haplotype calling, SNP calling and assign quality filteres to SNPs before hardfiltering. Instruction can be found in https://github.com/broadinstitute/gatk
+
 **mafft** is used to add the outgroup sequence to the aligned fasta file and perform a new alignment. Instruction can be found in https://mafft.cbrc.jp/alignment/software/
 
 **MACSE** is used to polish the alignment output of maft. Installation instructions can be found in https://github.com/ranwez/MACSE_V2_PIPELINES
