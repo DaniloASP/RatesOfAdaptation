@@ -45,9 +45,10 @@ These scripts use a series of tools that you might need depending on the step yo
 
 **bppPopStat:** Calculation of kappa, polymorphism and substitutions counts are performed using this tool on each gene individually. A first run is performed for the estimation of the median kappa across all genes. Here, the distribution of kappa must be unimodal (see Fig1). Next, kappa is fixed to the previously determined median and the counts of mutations are performed. Scripts in [4_bppPopStat](https://github.com/DaniloASP/RatesOfAdaptation/tree/main/4_bppPopStat).
 
-<img src="https://github.com/DaniloASP/RatesOfAdaptation/blob/main/4_bppPopStat/Zymoseptoriatritici.485.4935genes.kappa3.05.core.jpeg" alt="drawing" width="600"/>
-
-Fig1. Example of kappa estimations in the fungus *Zymoseptoria tritici*
+<p align="center">
+  <img src="https://github.com/DaniloASP/RatesOfAdaptation/blob/main/4_bppPopStat/Zymoseptoriatritici.485.4935genes.kappa3.05.core.jpeg" alt="drawing" width="600"/>
+</p>
+<p align="center"><b>Fig1.</b> Example of kappa estimations in the fungus <i>Zymoseptoria tritici</i></p>
 
 **GRAPES:** Calculation of the rates of adaptive evolution based on the unfolded SFS of a group of protein coding genes. Note that calculations are not based on single genes. First, an initial run is performed for the identification of the best model for the distribution of fitness effects (DFE) using `-model all`. All subsequent runs are performed with the best model per species. In adition, the flag `-no_div_param` was used in all runs. All scripts for the generation of in-put files, bootstraps, permutation and for parsing the output files are provided in [5_GRAPES](https://github.com/DaniloASP/RatesOfAdaptation/tree/main/5_GRAPES).
 
