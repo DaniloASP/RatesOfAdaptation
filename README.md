@@ -43,13 +43,13 @@ These scripts use a series of tools that you might need depending on the step yo
 
 **Protein functional analysis**: Using interpro scan and effectorP to classify proteins into non-secreted, secreted but not effector and predicted effectors. Scripts in [3_Protein_FunctionalAnalysis](https://github.com/DaniloASP/RatesOfAdaptation/tree/main/3_Protein_FunctionalAnalysis).
 
-**bppPopStat:** Calculation of kappa, polymorphism and substitutions counts are performed using this tool on each gene individually. A first run is performed for the estimation of the median kappa across all genes. Here, the distribution of kappa must be unimodal (see Fig1). Next, kappa is fixed to the previously determined median and the counts of mutations are performed. [4_bppPopStat](https://github.com/DaniloASP/RatesOfAdaptation/tree/main/4_bppPopStat).
+**bppPopStat:** Calculation of kappa, polymorphism and substitutions counts are performed using this tool on each gene individually. A first run is performed for the estimation of the median kappa across all genes. Here, the distribution of kappa must be unimodal (see Fig1). Next, kappa is fixed to the previously determined median and the counts of mutations are performed. Scripts in [4_bppPopStat](https://github.com/DaniloASP/RatesOfAdaptation/tree/main/4_bppPopStat).
 
 <img src="https://github.com/DaniloASP/RatesOfAdaptation/blob/main/4_bppPopStat/Zymoseptoriatritici.485.4935genes.kappa3.05.core.jpeg" alt="drawing" width="600"/>
 
 Fig1. Example of kappa estimations in the fungus *Zymoseptoria tritici*
 
-**GRAPES:** Calculation of the rates of adaptive evolution. First, an initial run is performed for the identification of the best model for the distribution of fitness effects (DFE) using `-model all`. All subsequent runs are performed with the best model per species. In adition, the flag `-no_div_param` was used in all runs.
+**GRAPES:** Calculation of the rates of adaptive evolution. First, an initial run is performed for the identification of the best model for the distribution of fitness effects (DFE) using `-model all`. All subsequent runs are performed with the best model per species. In adition, the flag `-no_div_param` was used in all runs. All scripts for the generation of in-put files and for parsing the output files are provided in [5_GRAPES](https://github.com/DaniloASP/RatesOfAdaptation/tree/main/5_GRAPES).
 
 
 
