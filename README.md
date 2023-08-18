@@ -13,8 +13,8 @@
 # Description
 These scripts are used for the calculation of the rates of adaptation from raw Illumina reads. The rates of adaptation are estimated by means of:
 * $\alpha$ (alpha): Proportion of non-synonymous mutations fixed by positive selection 
-* $\omega$ A (omegaA): Rate of adaptive non-synonymous substitutions
-* $\omega$ NA (omegaNA): Rate of non-adaptive non-synonymous substitutions
+* $\omega$<sub>A</sub> (omegaA): Rate of adaptive non-synonymous substitutions
+* $\omega$<sub>NA</sub> (omegaNA): Rate of non-adaptive non-synonymous substitutions
 
 # Installation
 These scripts use a series of tools that you might need depending on the step you want to run. Some important tools are:
