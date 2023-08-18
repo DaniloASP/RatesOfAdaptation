@@ -19,17 +19,19 @@ These scripts are used for the calculation of the rates of adaptation from raw I
 # Installation
 These scripts use a series of tools that you might need depending on the step you want to run. Some important tools are:
 
-**Trimmomatic** is used to trim adaptors and low quality reads from all illumina data. Instruction can be found in https://speciationgenomics.github.io/Trimmomatic/
+**Trimmomatic** is used to trim adaptors and low quality reads from all illumina data. Instructions can be found in https://speciationgenomics.github.io/Trimmomatic/
 
-**bowtie2** is used to map trimmed reads on the referece genome of each target species. Instruction can be found in https://github.com/BenLangmead/bowtie2
+**bowtie2** is used to map trimmed reads on the referece genome of each target species. Instructions can be found in https://github.com/BenLangmead/bowtie2
 
-**GATK** is used to perform haplotype calling, SNP calling and assign quality filteres to SNPs before hardfiltering. Instruction can be found in https://github.com/broadinstitute/gatk
+**GATK** is used to perform haplotype calling, SNP calling and assign quality filteres to SNPs before hardfiltering. Instructions can be found in https://github.com/broadinstitute/gatk
 
-**mafft** is used to add the outgroup sequence to the aligned fasta file and perform a new alignment. Instruction can be found in https://mafft.cbrc.jp/alignment/software/
+**bcftools** is used to extract one fasta sequence per isolate after considering SNP mutations in the dataset. Instructions can be found in https://samtools.github.io/bcftools/bcftools.html
+
+**mafft** is used to add the outgroup sequence to the aligned fasta file and perform a new alignment. Instructions can be found in https://mafft.cbrc.jp/alignment/software/
 
 **MACSE** is used to polish the alignment output of maft. Installation instructions can be found in https://github.com/ranwez/MACSE_V2_PIPELINES
 
-**Maffilter** is used for the extraction of CDS/exon regions from VCF files. For details see https://jydu.github.io/maffilter/
+**Maffilter** is used for the extraction of CDS/exon regions from consensus fasta files. For details see https://jydu.github.io/maffilter/
 
 **BppPopstat** is used for the calculation of kappa (the transition over transversion ratio) and quantification of polymorphism and divergence mutations across gene alignments. Installation instruction can be found in https://github.com/BioPP/bppsuite or [here](https://github.com/DaniloASP/RatesOfAdaptation/blob/main/4_bppPopStat/Installation_bppPopStat.sh).
 
