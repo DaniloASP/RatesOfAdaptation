@@ -29,7 +29,7 @@ These scripts use a series of tools that you might need depending on the step yo
 
 **CNVnator** is used to identify deleted regions across the genome. Installation instructions can be found in https://github.com/abyzovlab/CNVnator
 
-**LDhat** is used to calculate the population recombination rate (rho). Installation and look-up tables can be found in https://github.com/auton1/LDhat
+**LDhat** is used to calculate the population recombination rate ($\rho$). Installation and look-up tables can be found in https://github.com/auton1/LDhat
 
 **ANGSD** is used to estimate Watterson $\theta$ for the selection of the most appropriate look-up table from LDhat. Installation instructions can be found in https://github.com/ANGSD/angsd
 
