@@ -17,6 +17,11 @@ These scripts are used for the calculation of the rates of adaptation from raw I
 * $\omega$<sub>A</sub> (omegaA): Rate of adaptive non-synonymous substitutions
 * $\omega$<sub>NA</sub> (omegaNA): Rate of non-adaptive non-synonymous substitutions
 
+Furthermore the scripts were used for the estimation of recombination rate per species & across the genome, neutral genetic diveristy (proxy for Ne), core & accessory protein-coding gene repertoire, protein functional prediction (effectors, secreted and non-secreted proteins), phylogenetic inferences and statistical modeling.
+
+These scripts were used in the project: Large-scale analyses reveal the contribution of adaptive evolution in pathogenic and non-pathogenic fungal species, available at xxx. (BiorXiv link soon)
+
+
 # Installation
 These scripts use a series of tools that you might need depending on the step you want to run. Some important tools are:
 
