@@ -58,7 +58,7 @@ echo "/home/pereira/software/BPP_danilo/bin/bpppopstats param=$param_FILE isolat
 
 done < /home/pereira/2020_POSTDOC_MAIN/$Species_is/3_analysis/15_popstat/0_param/popstat_gene_outgroup_final.txt
 
-# tests in my mac took > 7min for each run, so go for arrays
+# tests took > 7min for each run, so go for arrays
 
 ls *.sh > list_of_jobs.txt
 cat list_of_jobs.txt | wc -l
