@@ -4,14 +4,14 @@
 #
 #
 #
-###########################################################################
-# This script will prepare all necessary files for pseudogenome assembly  #
-#                                                                         #
-# Files needed:                                                           #
-#               * standard gff annotation file (needs to be sorted)       #
-#               * maffilter exon output file in fasta.                    #
-#                                                                         #
-###########################################################################
+######################################################################################################################
+# This script will prepare all necessary files for pseudogenome assembly and will output individual gene alignments  #
+#                                                                                                                    #
+# Files needed:                                                                                                      #
+#               * standard gff annotation file (needs to be sorted)                                                  #
+#               * maffilter exon output file in fasta.                                                               #
+#                                                                                                                    #
+######################################################################################################################
 #
 #
 #
@@ -73,20 +73,10 @@ for cds in db.features_of_type('CDS', order_by=('seqid','start')): # take 'exon'
 GFF_columns = ["seqname", "source", "feature", "start", "end", "score", "strand", "frame", "attribute"]
 CDS_df = pd.DataFrame(CDS_list, columns=GFF_columns)
 
-## IMPORTANT
-## Up to this point a problem for scalating is related to how the GFF is coded. 
-## Now the gene name is needed and it might also depend on how the GFF is coded.
-# In this case of C. parasitica the last column for exons are like Parent=rna-XP_040780365.1, and the protein name is XP_040780365.1. What I can do is to erase `rna-`, which will leave Parent=XP_040780365.1 for exon's last column.
-#CDS_df['attribute'] = CDS_df['attribute'].str.replace('rna-','',regex=True)
-#CDS_df['attribute'] = CDS_df['attribute'].str.replace('[|,_]','',regex=True)
-
 # get gene_id
 CDS_df["gene_id"] = CDS_df["attribute"].str.split('=rna-', expand=True)[1]
 
 #CDS_df
-############## RC case, not sure if this is C parasitica case.
-# I tried it, but then in STEP 3 of script 5, it will give an error because these tRNA exons will be missing. So I commented this part out, and proceeded without removing these at this point. Need to be removed later!
-# OBS: there are some rna-xxx (tRNA exon). A total of 198 rows need to be removed. 3 containing pseudogenictranscript (e.g. pseudogenictranscript.SNOG401040A), and 195 containing rna-xxx.
 #exon_df = exon_df[~exon_df.gene_id.str.contains("rna")]
 #exon_df = exon_df[~exon_df.gene_id.str.contains("pseudogenictranscript")]
 ##############
