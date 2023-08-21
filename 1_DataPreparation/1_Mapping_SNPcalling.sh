@@ -5,7 +5,7 @@
 #
 #
 ######################################################################################################################
-# Script used to clean and perform sanity checks on the reference genome and annotation file of a reference species  #
+# Script used to clean, perform sanity checks and map reads on the reference genome  			             #
 #                                                                                                                    #
 # Files needed:                                                                                                      #
 #               * Reference genome in fasta format                                                                   #
