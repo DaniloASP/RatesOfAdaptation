@@ -48,7 +48,7 @@ These scripts use a series of tools that you might need depending on the step yo
 
 **BRAKER2** is used to predict genes on the outgroup assembled genomes. Installation instructions can be found in https://github.com/Gaius-Augustus/BRAKER
 
-**OrthiFinder** is used to identify single copy orthologs between the protein list of target and outgroup species. Installation instructions can be found in https://github.com/davidemms/OrthoFinder
+**OrthoFinder** is used to identify single copy orthologs between the protein list of target and outgroup species. Installation instructions can be found in https://github.com/davidemms/OrthoFinder
 
 # Usage
 
