@@ -4,13 +4,14 @@
 #
 #
 #
-###########################################################################
-# This script will prepare all necessary files for pseudogenome assembly  #
-#                                                                         #
-# Files needed:                                                           #
-#               * protein fasta file from target and outgroup species     #
-#                                                                         #
-###########################################################################
+###########################################################################################################
+# This script will extract single copy orthologous genes from the protein file of the outgroup species    #
+#                                                                                                         #
+# Files needed:                                                                                           #
+#               * protein fasta file from outgroup species                                                #
+#               * output from orthofinder                                                                 #
+#                                                                                                         #
+###########################################################################################################
 #
 #
 #
