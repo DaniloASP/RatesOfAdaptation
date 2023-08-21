@@ -7,7 +7,6 @@
 #############################################################################################################################################################################
 # Script used to extract a CDS features from all sampled genomes                                                                                                            #
 #                                                                                                                                                                           #
-# Files needed:                                                                                                                                                             #
 # Files required:   * Reference genome, with core chr only, in fasta format and fai [samtools faidx Sn15.2021_genome.CORE.fa] (used by bowtie2, but CORE only)              #
 #                   * param file for maffilter (provided on github - param.PN.Oct2021)                                                                                      #
 #                   * folder with new genomes                                                                                                                               #
