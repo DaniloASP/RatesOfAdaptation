@@ -25,7 +25,7 @@ These scripts were used in the project: "Large-scale analyses reveal the contrib
 # Methodology schematic
 
 <p align="center">
-  <img src="Methodology_schematic.jpg" alt="drawing" width="600"/>
+  <img src="Methodology_schematic2.jpg" alt="drawing" width="600"/>
 </p>
 <p align="center"><b>Fig1.</b> Methodology schematic showing the various steps and tools used</p>
 
