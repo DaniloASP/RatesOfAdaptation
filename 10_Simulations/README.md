@@ -1,4 +1,5 @@
-Assess the impact of population structure on the estimation of the rate of adaptation.
+Assess the impact of population structure on the estimation of the rate of adaptation. Simulations run by Prof. Julien Yann Dutheil (https://www.evolbio.mpg.de/person/40579/15929)
+	
 
 ```bash
 NTHREADS=20
