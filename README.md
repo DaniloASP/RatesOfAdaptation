@@ -7,7 +7,7 @@
 # Content
 
 -    [Description](#description)
--    [Methodology schematic](#Methodology-schematic)
+-    [Methodology schematic](#Methodology_schematic)
 -    [Installation](#installation)
 -    [Usage](#usage)
 -    [Disclaimer](#disclaimer)
@@ -63,6 +63,8 @@ These scripts use a series of tools that you might need depending on the step yo
 
 **OrthoFinder** is used to identify single copy orthologs between the protein list of target and outgroup species. Installation instructions can be found in https://github.com/davidemms/OrthoFinder
 
+**SLiM:** Simulation of several population structure scenarios. Installation instructions can be found in https://github.com/MesserLab/SLiM
+
 # Usage
 
 **Data preparation:** Raw illumina reads are trimmed, filtered for quality and mapped onto a reference genome. After hardfiltering and sanity checks, a consensus genome is extracted from each sample in the VCF, and Maffilter is used to extract the coding region of reach consensus genome. A custom python script is then used to merge all conding regions per gene. Scripts in [1_DataPreparation](https://github.com/DaniloASP/RatesOfAdaptation/tree/main/1_DataPreparation). For the outgroup species, raw genome reads were downloaded from NCBI and de novo assembly and gene predictions were performed. Scripts in [9_Outgroup_assembly_gene_prediction](https://github.com/DaniloASP/RatesOfAdaptation/tree/main/9_Outgroup_assembly_gene_prediction)
@@ -85,6 +87,8 @@ These scripts use a series of tools that you might need depending on the step yo
 **Identification of accessory genes:** First CNVnator was used to identify deleted regions across the genome of each sample. Runs were performed on each BAM file. Next, the coordinates of deletions and protein-coding genes were overlaped and gene coordinates completly within deletions were considered missing from a sample, and thus acessory. Scripts in [7_Identify_Accessory_genes](https://github.com/DaniloASP/RatesOfAdaptation/tree/main/7_Identify_Accessory_genes).
 
 **Generalized least squares modeling:** To access the significance of correlations and account for phylogenetic signals a generalized least squares modeling procedure was implemented. The following effects were tested against the rates at adaptation, at both genome-wide and species-wide levels: (i) gene categories (non-secreted, secreted but not effectors and effectors), (ii) recombination ($\rho$), (iii) effective population size (using the neutral genetic diversity $\pi$<sub>S</sub> as proxy) were tested. Scripts in [8_Generalized_least_squares_modeling](https://github.com/DaniloASP/RatesOfAdaptation/tree/main/8_Generalized_least_squares_modeling)
+
+**Simulations:** To infer on the robustness of our inferences to population structure, we performed several simulations prior to estimations of the rates of adaptation. Detailed information and scripts are available in [10_Simulations](https://github.com/DaniloASP/RatesOfAdaptation/tree/main/10_Simulations)
 
 
 # Disclaimer
