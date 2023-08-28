@@ -1,0 +1,56 @@
+initialize()
+{
+  // set the overall mutation rate
+  initializeMutationRate(2.2e-7);
+  initializeSex("A");
+  
+  // three types of mutations: slightly deleterious, adaptives and neutral.
+  cat("#MUTATION TYPES\n");
+  initializeMutationType("m1", 0.5, "f", 0.0);
+  initializeMutationType("m2", 0.5, "g", -2.5, 0.3);
+  initializeMutationType("m3", 0.5, "e", 0.01);
+
+  // g1 genomic element type: coding: 
+  cat("#GENOMIC ELEMENT TYPES\n");
+  cat('#g1 m1 0.25\n');
+  initializeGenomicElementType("g1",c( m1 , m2, m3), c(0.25, 0.75 - propPos, propPos));
+
+  // chromosome consisting of 1 genomic elements of type g1 , with gaps between them at regular intervals
+  for (index in 1:1500)
+    initializeGenomicElement(g1, index*1000, index*1000 + 499);
+  
+  // uniform recombination rate to begin with
+  cat("#RECOMBINATION RATE\n");
+  initializeRecombinationRate(1e-7);
+}
+
+1 early() {
+  sim.addSubpop("p1", 10000);
+}
+
+10000 early() {
+  sim.addSubpopSplit("p2", 10000, p1);
+  p1.setMigrationRates(p2, propAdmixture);
+  p2.setMigrationRates(p1, propAdmixture);
+
+}
+
+//Burnin:
+10000 late() { p1.outputSample(20); }
+
+20000 early() {
+  // set up p3 to generate itself entirely from migrants
+  sim.addSubpop("p3", 10000);
+  p3.setMigrationRates(c(p1, p2), c(0.5, 0.5));
+}
+
+20000 late() {
+  // remove the source subpopulations
+  p3.setMigrationRates(c(p1, p2), c(0.0, 0.0));
+  p1.setSubpopulationSize(0);
+  p2.setSubpopulationSize(0);
+}
+
+100000 late() { p3.outputSample(20); }
+100000 late() { sim.outputFixedMutations(); }
+

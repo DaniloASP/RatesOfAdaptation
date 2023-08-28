@@ -1,0 +1,34 @@
+initialize()
+{
+  //propPos = 0.0015
+  // set the overall mutation rate
+  initializeMutationRate(2.2e-7);
+  initializeSex("A");
+  
+  // three types of mutations: slightly deleterious, adaptives and neutral.
+  cat("#MUTATION TYPES\n");
+  initializeMutationType("m1", 0.5, "f", 0.0);
+  initializeMutationType("m2", 0.5, "g", -2.5, 0.3);
+  initializeMutationType("m3", 0.5, "e", 0.01);
+
+  // g1 genomic element type: coding: 
+  cat("#GENOMIC ELEMENT TYPES\n");
+  cat('#g1 m1 0.25\n');
+  initializeGenomicElementType("g1",c( m1 , m2, m3), c(0.25, 0.75 - propPos, propPos));
+
+  // chromosome consisting of 1 genomic elements of type g1 , with gaps between them at regular intervals
+  for (index in 1:1500)
+    initializeGenomicElement(g1, index*1000, index*1000 + 499);
+  
+  // uniform recombination rate to begin with
+  cat("#RECOMBINATION RATE\n");
+  initializeRecombinationRate(1e-7);
+}
+
+1 early() { sim.addSubpop("p1", 10000); }
+
+//Burnin:
+10000 late() { p1.outputSample(20); }
+100000 late() { p1.outputSample(20); }
+100000 late() { sim.outputFixedMutations(); }
+

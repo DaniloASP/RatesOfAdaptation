@@ -1,0 +1,13 @@
+!!! Second order derivative is negative for parameter posGmean(0.871061). Moving in the other direction.
+!!! Second order derivative is negative for parameter pos_prop(0.507314). Moving in the other direction.
+!!! Function at new point is greater than at current point: 19972>573.433. Applying Felsenstein-Churchill correction: 0
+!!! Function at new point is greater than at current point: 16540.1>573.433. Applying Felsenstein-Churchill correction: 1
+!!! Function at new point is greater than at current point: 6571.04>573.433. Applying Felsenstein-Churchill correction: 2
+!!! Felsenstein-Churchill correction applied too many times.
+Use conjugate gradients optimization.
+!!! Second order derivative is negative for parameter pos_prop(4.21369). Moving in the other direction.
+!!! Function at new point is greater than at current point: 6019.68>153.955. Applying Felsenstein-Churchill correction: 0
+!!! Function at new point is greater than at current point: 215.727>153.955. Applying Felsenstein-Churchill correction: 1
+!!! Function at new point is greater than at current point: 153.989>153.955. Applying Felsenstein-Churchill correction: 2
+!!! Function at new point is greater than at current point: 153.932>153.922. Applying Felsenstein-Churchill correction: 0
+!!! Function at new point is greater than at current point: 153.921>153.921. Applying Felsenstein-Churchill correction: 0
